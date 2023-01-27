@@ -2,15 +2,23 @@ package com.mzo.gestiondestock.exception;
 
 import java.util.List;
 
-import lombok.Getter;
+//import lombok.Getter;
 
 public class InvalidEntityException extends RuntimeException{
 
-	@Getter
+	//@Getter
 	private ErrorCodes errorCodes;
-	@Getter
+	//@Getter
 	List<String> errors;
 	
+	public ErrorCodes getErrorCodes() {
+		return errorCodes;
+	}
+
+	public List<String> getErrors() {
+		return errors;
+	}
+
 	public InvalidEntityException(String message) {
 		super(message);
 	}

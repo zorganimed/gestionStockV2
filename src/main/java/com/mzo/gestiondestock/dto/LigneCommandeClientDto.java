@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 
 import com.mzo.gestiondestock.entities.LigneCommandeClient;
 
-import lombok.Builder;
-import lombok.Data;
+/*import lombok.Builder;
+import lombok.Data;*/
 
-@Data
-@Builder
+/*@Data
+@Builder*/
 public class LigneCommandeClientDto {
 
 	private Integer id;
@@ -20,17 +20,27 @@ public class LigneCommandeClientDto {
 	
 	private BigDecimal prixUnitaire;
 	
-	public static LigneCommandeClientDto fromEntity(LigneCommandeClient commandeClient) {
-		if(commandeClient == null) {
+	public static LigneCommandeClientDto fromEntity(LigneCommandeClient ligneCommandeClient) {
+		if(ligneCommandeClient == null) {
 			return null;
 		}
 		
-		return LigneCommandeClientDto.builder().id(commandeClient.getId())
+		LigneCommandeClientDto ligneCommandeClientDto = new LigneCommandeClientDto();
+		
+		ligneCommandeClientDto.setId(ligneCommandeClient.getId());
+		ligneCommandeClientDto.setQuantite(ligneCommandeClient.getQuantite());
+		ligneCommandeClientDto.setPrixUnitaire(ligneCommandeClient.getPrixUnitaire());
+		ligneCommandeClientDto.setArticle(ArticleDto.fromEntity(ligneCommandeClient.getArticle()));
+		ligneCommandeClientDto.setCommandeclient(CommandeClientDto.fromEntity(ligneCommandeClient.getCommandeclient()));
+ 		
+		return ligneCommandeClientDto;
+		
+		/*return LigneCommandeClientDto.builder().id(commandeClient.getId())
 				.quantite(commandeClient.getQuantite())
 				.prixUnitaire(commandeClient.getPrixUnitaire())
 				.commandeclient(CommandeClientDto.fromEntity(commandeClient.getCommandeclient()))
 				.article(ArticleDto.fromEntity(commandeClient.getArticle()))
-				.build();
+				.build();*/
 	}
 	
 	public static LigneCommandeClient toEntity(LigneCommandeClientDto ligneCommandeClientDto) {
@@ -48,5 +58,52 @@ public class LigneCommandeClientDto {
 		
 		return ligneCommandeClient;
 	}
+
+	public LigneCommandeClientDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public ArticleDto getArticle() {
+		return article;
+	}
+
+	public void setArticle(ArticleDto article) {
+		this.article = article;
+	}
+
+	public CommandeClientDto getCommandeclient() {
+		return commandeclient;
+	}
+
+	public void setCommandeclient(CommandeClientDto commandeclient) {
+		this.commandeclient = commandeclient;
+	}
+
+	public BigDecimal getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(BigDecimal quantite) {
+		this.quantite = quantite;
+	}
+
+	public BigDecimal getPrixUnitaire() {
+		return prixUnitaire;
+	}
+
+	public void setPrixUnitaire(BigDecimal prixUnitaire) {
+		this.prixUnitaire = prixUnitaire;
+	}
+	
+	
 	
 }

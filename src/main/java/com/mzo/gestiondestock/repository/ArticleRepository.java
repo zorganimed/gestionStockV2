@@ -1,6 +1,7 @@
 package com.mzo.gestiondestock.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,5 +18,7 @@ public interface ArticleRepository extends JpaRepository<Article, Integer> {
 	List<Article> findByCustomNativeQuery(@Param("code") String code);
 	
 	List<Article> findByCodeArticleAndDesignationIgnoreCase(String codeArticle, String designation);*/
+	
+	Optional<Article>  findArticleByCodeArticle(String codeArticle);
 
 }

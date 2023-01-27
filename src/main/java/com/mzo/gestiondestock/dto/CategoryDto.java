@@ -5,13 +5,13 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mzo.gestiondestock.entities.Category;
 
-import lombok.Builder;
-import lombok.Data;
+/*import lombok.Builder;
+import lombok.Data;*/
 
 
  
-@Builder
-@Data
+/*@Builder
+@Data*/
 public class CategoryDto {
 
 	private Integer id;
@@ -26,11 +26,19 @@ public class CategoryDto {
  		if(category == null) {
  			return null;
  		}
-  		return CategoryDto.builder()
+ 		
+ 		CategoryDto categoryDto = new CategoryDto();
+ 		
+ 		categoryDto.setId(category.getId());
+ 		categoryDto.setCode(category.getCode());
+ 		categoryDto.setDesignation(category.getDesignation());
+  		
+ 		return categoryDto;
+  		/*return CategoryDto.builder()
   				.id(category.getId())
   				.code(category.getCode())
   				.designation(category.getDesignation())
-  				.build();
+  				.build();*/
   		
  	}
  	
@@ -50,4 +58,50 @@ public class CategoryDto {
  		
  		
  	}
+
+	public CategoryDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public CategoryDto(Integer id, String code, String designation) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.designation = designation;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+	public List<ArticleDto> getArticles() {
+		return articles;
+	}
+
+	public void setArticles(List<ArticleDto> articles) {
+		this.articles = articles;
+	}
+ 	
+ 	
 }

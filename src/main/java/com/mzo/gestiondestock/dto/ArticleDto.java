@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 
 import com.mzo.gestiondestock.entities.Article;
 
-import lombok.Builder;
-import lombok.Data;
+/*import lombok.Builder;
+import lombok.Data;*/
 
-@Builder
-@Data
+/*@Builder
+@Data*/
 public class ArticleDto {
 	
 	private Integer id;
@@ -27,8 +27,19 @@ public class ArticleDto {
  			return null;
  		}
  		
-  		
- 		return ArticleDto.builder()
+ 		ArticleDto articleDto =new ArticleDto();
+ 		
+ 		articleDto.setId(article.getId());
+ 		articleDto.setCodeArticle(article.getCodeArticle());
+ 		articleDto.setDesignation(article.getDesignation());
+ 		articleDto.setTauxTva(article.getTauxTva());
+ 		articleDto.setPrixUnitaireHt(article.getPrixUnitaireHt());
+ 		articleDto.setPrixUnitaireTtc(article.getPrixUnitaireTtc());
+ 		articleDto.setPhoto(article.getPhoto());
+ 		articleDto.setCategory(CategoryDto.fromEntity(article.getCategory()));
+ 		
+ 		return articleDto;
+ 		/*return ArticleDto.builder()
  				.id(article.getId())
  				.codeArticle(article.getCodeArticle())
  				.designation(article.getDesignation())
@@ -37,7 +48,7 @@ public class ArticleDto {
  				.prixUnitaireTtc(article.getPrixUnitaireTtc())
  				.photo(article.getPhoto())
  				.category(CategoryDto.fromEntity(article.getCategory()))
- 				.build();
+ 				.build();*/
  	}
  	
  	public static Article toEntity(ArticleDto articleDto) {
@@ -59,6 +70,90 @@ public class ArticleDto {
  		return article;
  		
  	}
+
+	public ArticleDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ArticleDto(Integer id, String codeArticle, String designation, BigDecimal prixUnitaireHt, BigDecimal tauxTva,
+			BigDecimal prixUnitaireTtc, String photo, CategoryDto category) {
+		super();
+		this.id = id;
+		this.codeArticle = codeArticle;
+		this.designation = designation;
+		this.prixUnitaireHt = prixUnitaireHt;
+		this.tauxTva = tauxTva;
+		this.prixUnitaireTtc = prixUnitaireTtc;
+		this.photo = photo;
+		this.category = category;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getCodeArticle() {
+		return codeArticle;
+	}
+
+	public void setCodeArticle(String codeArticle) {
+		this.codeArticle = codeArticle;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+	public BigDecimal getPrixUnitaireHt() {
+		return prixUnitaireHt;
+	}
+
+	public void setPrixUnitaireHt(BigDecimal prixUnitaireHt) {
+		this.prixUnitaireHt = prixUnitaireHt;
+	}
+
+	public BigDecimal getTauxTva() {
+		return tauxTva;
+	}
+
+	public void setTauxTva(BigDecimal tauxTva) {
+		this.tauxTva = tauxTva;
+	}
+
+	public BigDecimal getPrixUnitaireTtc() {
+		return prixUnitaireTtc;
+	}
+
+	public void setPrixUnitaireTtc(BigDecimal prixUnitaireTtc) {
+		this.prixUnitaireTtc = prixUnitaireTtc;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public CategoryDto getCategory() {
+		return category;
+	}
+
+	public void setCategory(CategoryDto category) {
+		this.category = category;
+	}
+ 	
+ 	
 	
 
 }

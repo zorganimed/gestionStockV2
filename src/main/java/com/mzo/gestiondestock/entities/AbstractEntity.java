@@ -16,10 +16,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Data;
+//import lombok.Data;
 
 
-@Data
+//@Data
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 public class AbstractEntity implements Serializable{
@@ -37,5 +37,45 @@ public class AbstractEntity implements Serializable{
 	@Column(name = "lastUpdateDate")
 	@JsonIgnore
 	private Instant lastUpdateDate;
+	
+	
+
+	public AbstractEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public AbstractEntity(Integer id, Instant creationDate, Instant lastUpdateDate) {
+		super();
+		this.id = id;
+		this.creationDate = creationDate;
+		this.lastUpdateDate = lastUpdateDate;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Instant getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Instant creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Instant getLastUpdateDate() {
+		return lastUpdateDate;
+	}
+
+	public void setLastUpdateDate(Instant lastUpdateDate) {
+		this.lastUpdateDate = lastUpdateDate;
+	}
+	
+	
 
 }

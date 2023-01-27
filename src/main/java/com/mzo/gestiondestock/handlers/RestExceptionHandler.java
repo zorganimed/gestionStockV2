@@ -18,11 +18,17 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler{
 		
 		final HttpStatus notFound = HttpStatus.NOT_FOUND;
 		
-		final ErrorDto errorDto = ErrorDto.builder()
+		final ErrorDto errorDto = new ErrorDto();
+		
+		errorDto.setCode(exception.getErrorCodes());
+		errorDto.setMessage(exception.getMessage());
+		errorDto.setHttpCode(notFound.value());
+		
+		/*final ErrorDto errorDto = ErrorDto.builder()
 		.code(exception.getErrorCodes())
 		.message(exception.getMessage())
 		.httpCode(notFound.value())
- 		.build();
+ 		.build();*/
 		
 		return new ResponseEntity<>(errorDto, notFound);
 	}
@@ -32,13 +38,20 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler{
 		
 		final HttpStatus badRequest = HttpStatus.BAD_REQUEST;
 		
-		final ErrorDto errorDto =  ErrorDto
+		final ErrorDto errorDto =  new ErrorDto();
+		
+		errorDto.setCode(exception.getErrorCodes());
+		errorDto.setHttpCode(badRequest.value());
+		errorDto.setMessage(exception.getMessage());
+		errorDto.setErrors(exception.getErrors());
+		
+		/*final ErrorDto errorDto =  ErrorDto
 		.builder()
 		.code(exception.getErrorCodes())
 		.httpCode(badRequest.value())
 		.message(exception.getMessage())
 		.errors(exception.getErrors())
- 		.build();
+ 		.build();*/
 		
 		return new ResponseEntity<>(errorDto, badRequest);
 	}

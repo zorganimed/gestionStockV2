@@ -1,12 +1,16 @@
 package com.mzo.gestiondestock.exception;
 
-import lombok.Getter;
+//import lombok.Getter;
 
 public class EntityNotFoundException extends RuntimeException {
 	
-	@Getter
+	//@Getter
 	private ErrorCodes errorCodes;
 	
+	public ErrorCodes getErrorCodes() {
+		return errorCodes;
+	}
+
 	public EntityNotFoundException(String message) {
 		super(message);
 	}

@@ -3,11 +3,11 @@ package com.mzo.gestiondestock.dto;
 
 import com.mzo.gestiondestock.entities.Roles;
 
-import lombok.Builder;
-import lombok.Data;
+/*import lombok.Builder;
+import lombok.Data;*/
 
-@Data
-@Builder
+/*@Data
+@Builder*/
 public class RolesDto {
 
 	private Integer id;
@@ -23,10 +23,18 @@ public class RolesDto {
 			return null;
 		}
 		
-		return RolesDto.builder().id(roles.getId())
+		RolesDto rolesDto =new RolesDto();
+		
+		rolesDto.setId(roles.getId());
+		rolesDto.setRoleName(roles.getRoleName());
+		rolesDto.setUtilisateur(UtilisateurDto.fromEntity(roles.getUtilisateur()));
+		
+		return rolesDto;
+		
+		/*return RolesDto.builder().id(roles.getId())
 				.roleName(roles.getRoleName())
 				.utilisateur(UtilisateurDto.fromEntity(roles.getUtilisateur()))
-				.build();
+				.build();*/
 	}
 	
 	public static Roles toEntity(RolesDto rolesDto) {
@@ -43,4 +51,35 @@ public class RolesDto {
 		
 		return roles;
 	}
+
+	public RolesDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	public UtilisateurDto getUtilisateur() {
+		return utilisateur;
+	}
+
+	public void setUtilisateur(UtilisateurDto utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+	
+	
 }

@@ -10,11 +10,11 @@ import com.mzo.gestiondestock.entities.Article;
 import com.mzo.gestiondestock.entities.MvtStk;
 import com.mzo.gestiondestock.entities.TypeMvtStk;
 
-import lombok.Builder;
-import lombok.Data;
+/*import lombok.Builder;
+import lombok.Data;*/
 
-@Data
-@Builder
+/*@Data
+@Builder*/
 public class MvtStkDto {
 
 	private Integer id;
@@ -32,12 +32,21 @@ public class MvtStkDto {
 			return null;
 		}
 		
-		return MvtStkDto.builder().id(mvtStk.getId())
+		MvtStkDto mvtStkDto = new MvtStkDto();
+		
+		mvtStkDto.setId(mvtStk.getId());
+		mvtStkDto.setDateMvt(mvtStk.getDateMvt());
+		mvtStkDto.setQuantite(mvtStk.getQuantite());
+		mvtStkDto.setTypeMvt(mvtStk.getTypeMvt());
+		mvtStkDto.setArticle(ArticleDto.fromEntity(mvtStk.getArticle()));
+		return mvtStkDto;
+		
+		/*return MvtStkDto.builder().id(mvtStk.getId())
 				.dateMvt(mvtStk.getDateMvt())
 				.quantite(mvtStk.getQuantite())
 				.typeMvt(mvtStk.getTypeMvt())
 				.article(ArticleDto.fromEntity(mvtStk.getArticle()))
-				.build();
+				.build();*/
 	}
 	
 	public static MvtStk toEntity(MvtStkDto mvtStkDto) {
@@ -57,4 +66,51 @@ public class MvtStkDto {
 		return mvtStk;
 		
 	}
+
+	public MvtStkDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Instant getDateMvt() {
+		return dateMvt;
+	}
+
+	public void setDateMvt(Instant dateMvt) {
+		this.dateMvt = dateMvt;
+	}
+
+	public BigDecimal getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(BigDecimal quantite) {
+		this.quantite = quantite;
+	}
+
+	public ArticleDto getArticle() {
+		return article;
+	}
+
+	public void setArticle(ArticleDto article) {
+		this.article = article;
+	}
+
+	public TypeMvtStk getTypeMvt() {
+		return typeMvt;
+	}
+
+	public void setTypeMvt(TypeMvtStk typeMvt) {
+		this.typeMvt = typeMvt;
+	}
+	
+	
 }

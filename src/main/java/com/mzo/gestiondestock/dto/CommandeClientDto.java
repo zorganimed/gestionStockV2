@@ -6,11 +6,11 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mzo.gestiondestock.entities.CommandeClient;
 
-import lombok.Builder;
-import lombok.Data;
+/*import lombok.Builder;
+import lombok.Data;*/
 
-@Data
-@Builder
+/*@Data
+@Builder*/
 public class CommandeClientDto {
 	
 	private Integer id;
@@ -28,11 +28,20 @@ public class CommandeClientDto {
 			return null;
 		}
 		
-		return CommandeClientDto.builder().id(commandeClient.getId())
+		CommandeClientDto commandeClientDto = new CommandeClientDto();
+		
+		commandeClientDto.setId(commandeClient.getId());
+		commandeClientDto.setCode(commandeClient.getCode());
+		commandeClientDto.setDateCommande(commandeClient.getDateCommande());
+		commandeClientDto.setClient(ClientDto.fromEntity(commandeClient.getClient()));
+				
+		return commandeClientDto;
+		
+		/*return CommandeClientDto.builder().id(commandeClient.getId())
 				.code(commandeClient.getCode())
 				.dateCommande(commandeClient.getDateCommande())
 				.client(ClientDto.fromEntity(commandeClient.getClient()))
-				.build();
+				.build();*/
 	}
 	
 	public static CommandeClient toEntity(CommandeClientDto CommandeClientDto) {
@@ -51,5 +60,52 @@ public class CommandeClientDto {
 		return commandeClient;
 		
 	}
+
+	public CommandeClientDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public Instant getDateCommande() {
+		return dateCommande;
+	}
+
+	public void setDateCommande(Instant dateCommande) {
+		this.dateCommande = dateCommande;
+	}
+
+	public ClientDto getClient() {
+		return client;
+	}
+
+	public void setClient(ClientDto client) {
+		this.client = client;
+	}
+
+	public List<LigneCommandeClientDto> getLigneCommandeClients() {
+		return ligneCommandeClients;
+	}
+
+	public void setLigneCommandeClients(List<LigneCommandeClientDto> ligneCommandeClients) {
+		this.ligneCommandeClients = ligneCommandeClients;
+	}
+	
+	
 
 }

@@ -4,11 +4,11 @@ import java.math.BigDecimal;
 
 import com.mzo.gestiondestock.entities.LigneCommandeFournisseur;
 
-import lombok.Builder;
-import lombok.Data;
+/*import lombok.Builder;
+import lombok.Data;*/
 
-@Data
-@Builder
+/*@Data
+@Builder*/
 public class LigneCommandeFournisseurDto {
 	private Integer id;
     private ArticleDto article;
@@ -26,12 +26,22 @@ public class LigneCommandeFournisseurDto {
 			return null;
 		}
 		
-		return LigneCommandeFournisseurDto.builder().id(ligneCommandeFournisseur.getId())
+		LigneCommandeFournisseurDto ligneCommandeFournisseurDto = new LigneCommandeFournisseurDto();
+		
+		ligneCommandeFournisseurDto.setId(ligneCommandeFournisseur.getId());
+		ligneCommandeFournisseurDto.setQuantite(ligneCommandeFournisseur.getQuantite());
+		ligneCommandeFournisseurDto.setPrixUnitaire(ligneCommandeFournisseur.getPrixUnitaire());
+		ligneCommandeFournisseurDto.setArticle(ArticleDto.fromEntity(ligneCommandeFournisseur.getArticle()));
+		ligneCommandeFournisseurDto.setCommandefournisseur(CommandeFournisseurDto.fromEntity(ligneCommandeFournisseur.getCommandefournisseur()));
+		
+		
+		return ligneCommandeFournisseurDto;
+		/*return LigneCommandeFournisseurDto.builder().id(ligneCommandeFournisseur.getId())
 				.quantite(ligneCommandeFournisseur.getQuantite())
 				.prixUnitaire(ligneCommandeFournisseur.getPrixUnitaire())
 				.commandefournisseur(CommandeFournisseurDto.fromEntity(ligneCommandeFournisseur.getCommandefournisseur()))
 				.article(ArticleDto.fromEntity(ligneCommandeFournisseur.getArticle()))
-				.build();
+				.build();*/
 	}
 	
 	public static LigneCommandeFournisseur toEntity(LigneCommandeFournisseurDto ligneCommandeFournisseurDto) {
@@ -50,4 +60,51 @@ public class LigneCommandeFournisseurDto {
 		return ligneCommandeFournisseur;
 		
 	}
+
+	public LigneCommandeFournisseurDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public ArticleDto getArticle() {
+		return article;
+	}
+
+	public void setArticle(ArticleDto article) {
+		this.article = article;
+	}
+
+	public CommandeFournisseurDto getCommandefournisseur() {
+		return commandefournisseur;
+	}
+
+	public void setCommandefournisseur(CommandeFournisseurDto commandefournisseur) {
+		this.commandefournisseur = commandefournisseur;
+	}
+
+	public BigDecimal getQuantite() {
+		return quantite;
+	}
+
+	public void setQuantite(BigDecimal quantite) {
+		this.quantite = quantite;
+	}
+
+	public BigDecimal getPrixUnitaire() {
+		return prixUnitaire;
+	}
+
+	public void setPrixUnitaire(BigDecimal prixUnitaire) {
+		this.prixUnitaire = prixUnitaire;
+	}
+	
+	
 }
