@@ -18,10 +18,12 @@ public class CommandeFournisseurDto {
 	
 	private Instant dateCommande;
 	
-	 
+    private Integer idEntreprise;
+	
+	
 	private FournisseurDto fournisseur;
 	
-	@JsonIgnore
+	//@JsonIgnore
  	List<LigneCommandeFournisseurDto> ligneCommandeFournisseurs;
 	
 	public static CommandeFournisseurDto fromEntity(CommandeFournisseur commandeFournisseur) {
@@ -36,6 +38,7 @@ public class CommandeFournisseurDto {
 		commandeFournisseurDto.setCode(commandeFournisseur.getCode());
 		commandeFournisseurDto.setDateCommande(commandeFournisseur.getDateCommande());
 		commandeFournisseurDto.setFournisseur(FournisseurDto.fromEntity(commandeFournisseur.getFournisseur()));
+		commandeFournisseurDto.setIdEntreprise(commandeFournisseur.getIdEntreprise());
 		
 		return commandeFournisseurDto;
 		
@@ -59,6 +62,7 @@ public class CommandeFournisseurDto {
 		commandeFournisseur.setCode(commandeFournisseurDto.getCode());
 		commandeFournisseur.setDateCommande(commandeFournisseurDto.getDateCommande());
 		commandeFournisseur.setFournisseur(FournisseurDto.toEntity(commandeFournisseurDto.getFournisseur()));
+		commandeFournisseur.setIdEntreprise(commandeFournisseurDto.getIdEntreprise());
 		
 		return commandeFournisseur;
 	}
@@ -108,6 +112,12 @@ public class CommandeFournisseurDto {
 		this.ligneCommandeFournisseurs = ligneCommandeFournisseurs;
 	}
 	
-	
+	public Integer getIdEntreprise() {
+		return idEntreprise;
+	}
+
+	public void setIdEntreprise(Integer idEntreprise) {
+		this.idEntreprise = idEntreprise;
+	} 
 
 }

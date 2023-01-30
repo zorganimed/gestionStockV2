@@ -24,7 +24,7 @@ public class FournisseurDto {
 	private String mail;
 	
 	private String numTel;
-	
+    private Integer idEntreprise;
 	
 	@JsonIgnore
  	private List<CommandeFournisseurDto> commandeFournisseurs;
@@ -44,6 +44,7 @@ public class FournisseurDto {
 		fournisseurDto.setMail(fournisseur.getMail());
 		fournisseurDto.setNumTel(fournisseur.getNumTel());
 		fournisseurDto.setAdresse(AdresseDto.fromEntity(fournisseur.getAdresse()));
+		fournisseurDto.setIdEntreprise(fournisseur.getIdEntreprise());
 		
 		return fournisseurDto;
 		
@@ -73,6 +74,7 @@ public class FournisseurDto {
 		fournisseur.setMail(fournisseurDto.getMail());
 		fournisseur.setNumTel(fournisseurDto.getNumTel());
 		fournisseur.setAdresse(AdresseDto.toEntity(fournisseurDto.getAdresse()));
+		fournisseur.setIdEntreprise(fournisseurDto.getIdEntreprise());
 		
 		return fournisseur;
 	}
@@ -163,6 +165,14 @@ public class FournisseurDto {
 		this.commandeFournisseurs = commandeFournisseurs;
 	}
 	
-	
+
+	public Integer getIdEntreprise() {
+		return idEntreprise;
+	}
+
+	public void setIdEntreprise(Integer idEntreprise) {
+		this.idEntreprise = idEntreprise;
+	}
+		
 	
 }

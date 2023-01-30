@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.util.StringUtils;
-import com.mzo.gestiondestock.entities.CommandeFournisseur;
+
+import com.mzo.gestiondestock.dto.CommandeFournisseurDto;
 
 public class CommandeFournisseurValidator {
 
-public static List<String> validate(CommandeFournisseur dto){
+public static List<String> validate(CommandeFournisseurDto dto){
 		
 		List<String> errors = new ArrayList<>();
 		

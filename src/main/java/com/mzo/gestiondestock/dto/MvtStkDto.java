@@ -26,6 +26,8 @@ public class MvtStkDto {
 	
 	private TypeMvtStk typeMvt;
 	
+    private Integer idEntreprise;
+		
 	public static MvtStkDto fromEntity(MvtStk mvtStk ) {
 		
 		if(mvtStk == null) {
@@ -39,6 +41,7 @@ public class MvtStkDto {
 		mvtStkDto.setQuantite(mvtStk.getQuantite());
 		mvtStkDto.setTypeMvt(mvtStk.getTypeMvt());
 		mvtStkDto.setArticle(ArticleDto.fromEntity(mvtStk.getArticle()));
+		mvtStk.setIdEntreprise(mvtStkDto.getIdEntreprise());
 		return mvtStkDto;
 		
 		/*return MvtStkDto.builder().id(mvtStk.getId())
@@ -62,6 +65,7 @@ public class MvtStkDto {
 		mvtStk.setQuantite(mvtStk.getQuantite());
 		mvtStk.setTypeMvt(mvtStk.getTypeMvt());
 		mvtStk.setArticle(ArticleDto.toEntity(mvtStkDto.getArticle()));
+		mvtStk.setIdEntreprise(mvtStkDto.getIdEntreprise());
 		
 		return mvtStk;
 		
@@ -111,6 +115,15 @@ public class MvtStkDto {
 	public void setTypeMvt(TypeMvtStk typeMvt) {
 		this.typeMvt = typeMvt;
 	}
+	
+	public Integer getIdEntreprise() {
+		return idEntreprise;
+	}
+
+	public void setIdEntreprise(Integer idEntreprise) {
+		this.idEntreprise = idEntreprise;
+	}
+	
 	
 	
 }

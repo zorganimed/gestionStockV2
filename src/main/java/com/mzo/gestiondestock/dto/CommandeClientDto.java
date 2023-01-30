@@ -16,10 +16,10 @@ public class CommandeClientDto {
 	private Integer id;
 	private String code;
 	private Instant dateCommande;
+    private Integer idEntreprise;
 	
- 
 	private ClientDto client;
-	@JsonIgnore
+	//@JsonIgnore
  	private List<LigneCommandeClientDto> ligneCommandeClients;
 	
 	public static CommandeClientDto fromEntity(CommandeClient commandeClient) {
@@ -34,6 +34,7 @@ public class CommandeClientDto {
 		commandeClientDto.setCode(commandeClient.getCode());
 		commandeClientDto.setDateCommande(commandeClient.getDateCommande());
 		commandeClientDto.setClient(ClientDto.fromEntity(commandeClient.getClient()));
+		commandeClientDto.setIdEntreprise(commandeClient.getIdEntreprise());
 				
 		return commandeClientDto;
 		
@@ -56,6 +57,7 @@ public class CommandeClientDto {
 		commandeClient.setCode(CommandeClientDto.getCode());
 		commandeClient.setDateCommande(CommandeClientDto.getDateCommande());
 		commandeClient.setClient(ClientDto.toEntity(CommandeClientDto.getClient()));
+		commandeClient.setIdEntreprise(CommandeClientDto.getIdEntreprise());
 		
 		return commandeClient;
 		
@@ -106,6 +108,14 @@ public class CommandeClientDto {
 		this.ligneCommandeClients = ligneCommandeClients;
 	}
 	
-	
+
+	public Integer getIdEntreprise() {
+		return idEntreprise;
+	}
+
+	public void setIdEntreprise(Integer idEntreprise) {
+		this.idEntreprise = idEntreprise;
+	}
+ 
 
 }

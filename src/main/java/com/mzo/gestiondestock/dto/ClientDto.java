@@ -3,7 +3,6 @@ package com.mzo.gestiondestock.dto;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.mzo.gestiondestock.entities.Adresse;
 import com.mzo.gestiondestock.entities.Client;
 
 /*import lombok.Builder;
@@ -27,6 +26,9 @@ public class ClientDto {
 	
 	private String numTel;
 	
+	private Integer idEntreprise;
+	
+	
 	@JsonIgnore
  	private List<CommandeClientDto> commandeClients;
 	
@@ -45,6 +47,7 @@ public class ClientDto {
 		clientDto.setMail(client.getMail());
 		clientDto.setNumTel(client.getNumTel());
 		clientDto.setAdresse(AdresseDto.fromEntity(client.getAdresse()));
+		clientDto.setIdEntreprise(client.getIdEntreprise());
 		
 		return clientDto;
  		
@@ -73,6 +76,7 @@ public class ClientDto {
 		client.setMail(clientDto.getMail());
 		client.setNumTel(clientDto.getNumTel());
 		client.setAdresse(AdresseDto.toEntity(clientDto.getAdresse()));
+		client.setIdEntreprise(clientDto.getIdEntreprise());
 		
 		 
 		return client;
@@ -147,6 +151,16 @@ public class ClientDto {
 	public void setCommandeClients(List<CommandeClientDto> commandeClients) {
 		this.commandeClients = commandeClients;
 	}
+	
+	public Integer getIdEntreprise() {
+		return idEntreprise;
+	}
+
+	public void setIdEntreprise(Integer idEntreprise) {
+		this.idEntreprise = idEntreprise;
+	}
+
+	
 	
 	
 }

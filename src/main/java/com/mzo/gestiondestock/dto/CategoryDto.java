@@ -17,6 +17,7 @@ public class CategoryDto {
 	private Integer id;
 	private String code;
 	private String designation;
+	private Integer idEntreprise;
 	
 	@JsonIgnore
  	private List<ArticleDto> articles;
@@ -32,6 +33,7 @@ public class CategoryDto {
  		categoryDto.setId(category.getId());
  		categoryDto.setCode(category.getCode());
  		categoryDto.setDesignation(category.getDesignation());
+ 		categoryDto.setIdEntreprise(category.getIdEntreprise());
   		
  		return categoryDto;
   		/*return CategoryDto.builder()
@@ -52,6 +54,7 @@ public class CategoryDto {
  		category.setId(categoryDto.getId());
  		category.setCode(categoryDto.getCode());
  		category.setDesignation(categoryDto.getDesignation());
+ 		category.setIdEntreprise(categoryDto.getIdEntreprise());
  		
  		return category;
  		
@@ -103,5 +106,13 @@ public class CategoryDto {
 		this.articles = articles;
 	}
  	
- 	
+	 
+	
+		public Integer getIdEntreprise() {
+			return idEntreprise;
+		}
+
+		public void setIdEntreprise(Integer idEntreprise) {
+			this.idEntreprise = idEntreprise;
+		}
 }

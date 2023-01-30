@@ -17,6 +17,8 @@ public class RolesDto {
 
 	private UtilisateurDto utilisateur;
 	
+    private Integer idEntreprise;
+	
 	public static RolesDto fromEntity(Roles roles) {
 		
 		if(roles == null) {
@@ -28,6 +30,7 @@ public class RolesDto {
 		rolesDto.setId(roles.getId());
 		rolesDto.setRoleName(roles.getRoleName());
 		rolesDto.setUtilisateur(UtilisateurDto.fromEntity(roles.getUtilisateur()));
+		rolesDto.setIdEntreprise(roles.getIdEntreprise());
 		
 		return rolesDto;
 		
@@ -48,6 +51,7 @@ public class RolesDto {
 		roles.setId(rolesDto.getId());
 		roles.setRoleName(rolesDto.getRoleName());
 		roles.setUtilisateur(UtilisateurDto.toEntity(rolesDto.getUtilisateur()));
+		roles.setIdEntreprise(rolesDto.getIdEntreprise());
 		
 		return roles;
 	}
@@ -81,5 +85,11 @@ public class RolesDto {
 		this.utilisateur = utilisateur;
 	}
 	
-	
+	public Integer getIdEntreprise() {
+		return idEntreprise;
+	}
+
+	public void setIdEntreprise(Integer idEntreprise) {
+		this.idEntreprise = idEntreprise;
+	}	
 }

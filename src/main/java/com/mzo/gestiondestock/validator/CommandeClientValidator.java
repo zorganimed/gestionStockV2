@@ -24,6 +24,10 @@ public static List<String> validate(CommandeClientDto dto){
 			errors.add("Veuillez renseigner le code de la commande client");
 		}
 		
+		if(dto.getCode() == null) {
+			errors.add("Veuillez renseigner le client de la commande client");
+		}
+		
 		
 		if(dto.getDateCommande() == null) {
 			errors.add("Veuillez renseigner la date de la commande client");

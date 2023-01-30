@@ -3,7 +3,6 @@ package com.mzo.gestiondestock.validator;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.util.StringUtils;
 
 import com.mzo.gestiondestock.dto.LigneCommandeClientDto;
 

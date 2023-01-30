@@ -19,6 +19,10 @@ public class VentesDto {
 	
 	private String commentaire;
 	
+    private Integer idEntreprise;
+	
+	
+	
 	public static VentesDto fromEntity(Ventes ventes) {
 		
 		if(ventes == null) {
@@ -31,6 +35,7 @@ public class VentesDto {
 		ventesDto.setCode(ventes.getCode());
 		ventesDto.setDateVente(ventes.getDateVente());
 		ventesDto.setCommentaire(ventes.getCommentaire());
+		ventesDto.setIdEntreprise(ventes.getIdEntreprise());
 		
 		return ventesDto;
 		
@@ -54,6 +59,7 @@ public class VentesDto {
 		ventes.setCode(ventesDto.getCode());
 		ventes.setDateVente(ventesDto.getDateVente());
 		ventes.setCommentaire(ventesDto.getCommentaire());
+		ventes.setIdEntreprise(ventesDto.getIdEntreprise());
 		
 		return ventes;
 	}
@@ -95,5 +101,12 @@ public class VentesDto {
 		this.commentaire = commentaire;
 	}
 	
+	public Integer getIdEntreprise() {
+		return idEntreprise;
+	}
+
+	public void setIdEntreprise(Integer idEntreprise) {
+		this.idEntreprise = idEntreprise;
+	}
 	
 }

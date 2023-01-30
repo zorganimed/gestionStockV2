@@ -19,9 +19,10 @@ public class ArticleDto {
  	private BigDecimal prixUnitaireTtc;
  	private String photo;
  	private CategoryDto category;
+ 	private Integer idEntreprise;
  	
- 	
- 	public static ArticleDto fromEntity(Article article) {
+
+	public static ArticleDto fromEntity(Article article) {
  		
  		if(article == null) {
  			return null;
@@ -37,6 +38,7 @@ public class ArticleDto {
  		articleDto.setPrixUnitaireTtc(article.getPrixUnitaireTtc());
  		articleDto.setPhoto(article.getPhoto());
  		articleDto.setCategory(CategoryDto.fromEntity(article.getCategory()));
+ 		articleDto.setIdEntreprise(article.getIdEntreprise());
  		
  		return articleDto;
  		/*return ArticleDto.builder()
@@ -66,6 +68,7 @@ public class ArticleDto {
  		article.setPrixUnitaireTtc(articleDto.getPrixUnitaireTtc());
  		article.setPhoto(articleDto.getPhoto());
  		article.setCategory(CategoryDto.toEntity(articleDto.getCategory()));
+ 		article.setIdEntreprise(articleDto.getIdEntreprise());
  		
  		return article;
  		
@@ -154,6 +157,12 @@ public class ArticleDto {
 	}
  	
  	
-	
+	public Integer getIdEntreprise() {
+		return idEntreprise;
+	}
+
+	public void setIdEntreprise(Integer idEntreprise) {
+		this.idEntreprise = idEntreprise;
+	}
 
 }
