@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.mzo.gestiondestock.dto.CategoryDto;
@@ -16,6 +17,7 @@ import com.mzo.gestiondestock.repository.CategoryRepository;
 import com.mzo.gestiondestock.services.CategoryService;
  import com.mzo.gestiondestock.validator.CategoryValidator;
 
+@Service
 public class CategoryServiceImpl implements CategoryService{
 	
 	private CategoryRepository categoryRepository;
@@ -31,7 +33,7 @@ public class CategoryServiceImpl implements CategoryService{
 
 			if(!errors.isEmpty()) {
 	 		//	log.error("Category is not valid",dto);
-	 			throw new InvalidEntityException("Category n'est pas valide", ErrorCodes.CATEGORY_NOT_FOUND, errors);
+	 			throw new InvalidEntityException("Category n'est pas valide", ErrorCodes.CATEGORY_NOT_VALID, errors);
 			}
 	 return CategoryDto.fromEntity(categoryRepository.save(CategoryDto.toEntity(dto)));
 	}
@@ -44,10 +46,10 @@ public class CategoryServiceImpl implements CategoryService{
 				return null;
 			}
 		
-		Optional<Category> category = categoryRepository.findById(id);
-			
+		/*Optional<Category> category = categoryRepository.findById(id);
+		return Optional.of(CategoryDto.fromEntity(category.get())).orElseThrow(() -> new EntityNotFoundException("Category not found", ErrorCodes.CATEGORY_NOT_FOUND));*/
 		
-		return Optional.of(CategoryDto.fromEntity(category.get())).orElseThrow(() -> new EntityNotFoundException("Category not found", ErrorCodes.CATEGORY_NOT_FOUND));
+		return categoryRepository.findById(id).map(CategoryDto::fromEntity).orElseThrow(()-> new EntityNotFoundException("Category not found", ErrorCodes.CATEGORY_NOT_FOUND));
 	}
 
 	@Override
@@ -56,9 +58,10 @@ public class CategoryServiceImpl implements CategoryService{
 			 return null;
 		 }
 		 
-		 Optional<Category> category = categoryRepository.findCategoryByDesignation(designation);
+		/* Optional<Category> category = categoryRepository.findCategoryByDesignation(designation);
+ 		 return Optional.of(CategoryDto.fromEntity(category.get())).orElseThrow(() -> new EntityNotFoundException("Category not found",ErrorCodes.CATEGORY_NOT_FOUND ));*/
 		 
-		 return Optional.of(CategoryDto.fromEntity(category.get())).orElseThrow(() -> new EntityNotFoundException("Category not found",ErrorCodes.CATEGORY_NOT_FOUND ));
+		 return categoryRepository.findCategoryByDesignation(designation).map(CategoryDto::fromEntity).orElseThrow(()-> new EntityNotFoundException("Category not found",ErrorCodes.CATEGORY_NOT_FOUND));
 	}
 
 	@Override
