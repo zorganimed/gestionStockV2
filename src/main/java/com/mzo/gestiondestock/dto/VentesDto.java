@@ -1,6 +1,7 @@
 package com.mzo.gestiondestock.dto;
 
 import java.time.Instant;
+import java.util.List;
 
 import com.mzo.gestiondestock.entities.Ventes;
 
@@ -20,8 +21,8 @@ public class VentesDto {
 	private String commentaire;
 	
     private Integer idEntreprise;
-	
-	
+    
+    private List<LigneVenteDto> ligneVentes;
 	
 	public static VentesDto fromEntity(Ventes ventes) {
 		
@@ -108,5 +109,14 @@ public class VentesDto {
 	public void setIdEntreprise(Integer idEntreprise) {
 		this.idEntreprise = idEntreprise;
 	}
+
+	public List<LigneVenteDto> getLigneVentes() {
+		return ligneVentes;
+	}
+
+	public void setLigneVentes(List<LigneVenteDto> ligneVentes) {
+		this.ligneVentes = ligneVentes;
+	}
+
 	
 }
