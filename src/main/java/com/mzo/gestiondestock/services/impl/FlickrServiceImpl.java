@@ -22,8 +22,7 @@ public class FlickrServiceImpl implements FlickrService{
 	
 	@Autowired
 	public FlickrServiceImpl(Flickr flickr) {
-		super();
-		this.flickr = flickr;
+ 		this.flickr = flickr;
 	}
 
 
