@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.mzo.gestiondestock.dto.EntrepriseDto;
 
+import io.swagger.annotations.Api;
+
+@Api(APP_ROOT+"/entreprises")
 public interface EntrepriseApi {
 	
 	@PostMapping(value = APP_ROOT+"/entreprises/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)

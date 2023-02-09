@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import com.mzo.gestiondestock.dto.ClientDto;
 
+import io.swagger.annotations.Api;
+
+@Api(APP_ROOT+"/clients")
 public interface ClientApi {
 	@PostMapping(value = APP_ROOT+"/clients/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	ClientDto save(ClientDto dto);
+	ClientDto save(@RequestBody ClientDto dto);
 	
 	@GetMapping(value = APP_ROOT+"/clients/{idClient}", produces = MediaType.APPLICATION_JSON_VALUE)
 	ClientDto findById(@PathVariable("idClient") Integer id);
