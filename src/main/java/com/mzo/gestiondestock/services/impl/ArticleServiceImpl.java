@@ -21,7 +21,6 @@ import com.mzo.gestiondestock.validator.ArticleValidator;
 //import lombok.extern.slf4j.Slf4j;
 
 @Service
-//@Slf4j
 public class ArticleServiceImpl implements ArticleService{
 	
 	

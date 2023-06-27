@@ -3,6 +3,7 @@ package com.mzo.gestiondestock.services;
 import java.util.List;
 
 import com.mzo.gestiondestock.dto.ArticleDto;
+import com.mzo.gestiondestock.entities.Article;
 
 public interface ArticleService {
 	

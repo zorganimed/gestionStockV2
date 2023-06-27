@@ -20,5 +20,6 @@ public interface ArticleRepository extends JpaRepository<Article, Integer> {
 	List<Article> findByCodeArticleAndDesignationIgnoreCase(String codeArticle, String designation);*/
 	
 	Optional<Article>  findArticleByCodeArticle(String codeArticle);
+	
 
 }

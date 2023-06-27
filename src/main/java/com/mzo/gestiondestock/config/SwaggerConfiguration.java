@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import static com.mzo.gestiondestock.utils.Constants.APP_ROOT;
 
 @Configuration
-//@EnableSwagger2
+@EnableSwagger2
 public class SwaggerConfiguration {
 	
 	@Bean
